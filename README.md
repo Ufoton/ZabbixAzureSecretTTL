@@ -12,5 +12,5 @@ Powershell module Microsoft.Graph must be instaled
 
     Install-Module Microsoft.Graph -Scope AllUsers
 
-To check:
+To check: 
     sudo -u zabbix ./azurekeyttl.ps1 lld
