@@ -45,21 +45,21 @@ $Apps | %{
     $app = Get-MgApplication -ApplicationId $aadAppObjId 
     $app.KeyCredentials | %{
         $lldObject += [PSCustomObject] @{
-            "{#CredentialType}" = "KeyCredentials";
-            "{#DisplayName}" = $app.DisplayName;
-            "{#AppId}" = $app.AppId;
-            "{#KeyID}" = $_.KeyId;
-	    "{#aadAppObjId}" = $aadAppObjId;
+            "{#CREDENTIALTYPE}" = "KeyCredentials";
+            "{#DISPLAYNAME}" = $app.DisplayName;
+            "{#APPID}" = $app.AppId;
+            "{#KEYID}" = $_.KeyId;
+	    "{#AADAPPOBJID}" = $aadAppObjId;
             }
     }
 
     $app.PasswordCredentials | %{
         $lldObject += [PSCustomObject] @{
-            "{#CredentialType}" = "PasswordCredentials";
-            "{#DisplayName}" = $app.DisplayName;
-            "{#AppId}" = $app.AppId;
-            "{#KeyID}" = $_.KeyId;
-            "{#aadAppObjId}" = $aadAppObjId;
+            "{#CREDENTIALTYPE}" = "PasswordCredentials";
+            "{#DISPLAYNAME}" = $app.DisplayName;
+            "{#APPID}" = $app.AppId;
+            "{#KEYID}" = $_.KeyId;
+            "{#AADAPPOBJID}" = $aadAppObjId;
         }
     }
 }
