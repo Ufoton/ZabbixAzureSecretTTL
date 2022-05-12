@@ -11,4 +11,6 @@ The minimum required permission is: Application.Read.All
 Script need "client secret", "tenant id" and "client id" from Azure App.
 Powershell module must be instaled
 
-Install-Module Microsoft.Graph 
+Install-Module Microsoft.Graph -Scope AllUsers
+
+To check sudo -u zabbix ./azurekeyttl.ps1 lld
