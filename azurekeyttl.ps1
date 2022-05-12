@@ -16,10 +16,10 @@ $body =  @{
      Client_Secret = $secret
 }
 
-$requestType=$args[1]
-$keyType = $args[2]
-$aadAppObjId = $args[3]
-$KeyId = $args[4]
+$requestType=$args[0]
+$keyType = $args[1]
+$aadAppObjId = $args[2]
+$KeyId = $args[3]
 
 function ConnectAzure {
 $connection = Invoke-RestMethod -Uri https://login.microsoftonline.com/$tenantid/oauth2/v2.0/token -Method POST -Body $body
