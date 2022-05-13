@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2022-05-13T07:32:04Z</date>
+    <groups>
+        <group>
+            <name>MyTemplates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>AzureAppKeyTTL</template>
+            <name>AzureAppKeyTTL</name>
+            <groups>
+                <group>
+                    <name>MyTemplates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>AzureKeyTTL</name>
+                </application>
+            </applications>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>AzureAppDiscovery</name>
+                    <type>EXTERNAL</type>
+                    <key>azurekeyttl.ps1[lld]</key>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#DISPLAYNAME} AzureAppKeyTTL</name>
+                            <type>EXTERNAL</type>
+                            <key>azurekeyttl.ps1[keyTtl,{#CREDENTIALTYPE}, {#AADAPPOBJID}, {#KEYID}]</key>
+                            <value_type>FLOAT</value_type>
+                            <description>Azure App {#DISPLAYNAME} AppID {#APPID} key {#KEYID} ttl</description>
+                            <applications>
+                                <application>
+                                    <name>AzureKeyTTL</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&lt;{$HIGHALERTDAYS}</expression>
+                                    <name>Azure App {#DISPLAYNAME} key expire soon</name>
+                                    <priority>HIGH</priority>
+                                    <description>Azure App {#DISPLAYNAME} AppID {#APPID} KeyID {#KEYID} need by updated</description>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                                <trigger_prototype>
+                                    <expression>{last()}&lt;{$WARNINGALERTDAYS}</expression>
+                                    <name>Azure App {#DISPLAYNAME} key expire soon</name>
+                                    <priority>WARNING</priority>
+                                    <description>Azure App {#DISPLAYNAME} AppID {#APPID} KeyID {#KEYID} need by updated</description>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                                <trigger_prototype>
+                                    <expression>{nodata(1w)}=1</expression>
+                                    <name>Azure App {#DISPLAYNAME} no data for 1 week</name>
+                                    <priority>WARNING</priority>
+                                    <description>Azure App {#DISPLAYNAME} AppID {#APPID} KeyID {#KEYID} no data for one week. Check externalscript from zabbix server</description>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$HIGHALERTDAYS}</macro>
+                    <value>5</value>
+                </macro>
+                <macro>
+                    <macro>{$WARNINGALERTDAYS}</macro>
+                    <value>14</value>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+</zabbix_export>
