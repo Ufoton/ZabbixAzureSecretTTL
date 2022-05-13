@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2022-05-13T07:32:04Z</date>
+    <date>2022-05-13T07:44:56Z</date>
     <groups>
         <group>
             <name>MyTemplates</name>
@@ -26,11 +26,13 @@
                     <name>AzureAppDiscovery</name>
                     <type>EXTERNAL</type>
                     <key>azurekeyttl.ps1[lld]</key>
+                    <delay>1d</delay>
                     <item_prototypes>
                         <item_prototype>
                             <name>{#DISPLAYNAME} AzureAppKeyTTL</name>
                             <type>EXTERNAL</type>
                             <key>azurekeyttl.ps1[keyTtl,{#CREDENTIALTYPE}, {#AADAPPOBJID}, {#KEYID}]</key>
+                            <delay>1d</delay>
                             <value_type>FLOAT</value_type>
                             <description>Azure App {#DISPLAYNAME} AppID {#APPID} key {#KEYID} ttl</description>
                             <applications>
