@@ -22,3 +22,5 @@ In same directory create settings.json.
 To check:
 
     sudo -u zabbix ./azurekeyttl.ps1 lld
+    
+Import template and add to Zabbix server host.
