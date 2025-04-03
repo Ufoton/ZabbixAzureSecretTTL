@@ -25,7 +25,8 @@ function ConnectAzure {
 $connection = Invoke-RestMethod -Uri https://login.microsoftonline.com/$tenantid/oauth2/v2.0/token -Method POST -Body $body
 $token = $connection.access_token
 
-$result = Connect-MgGraph -AccessToken $token
+$result = Connect-MgGraph ($token |ConvertTo-SecureString -AsPlainText -Force)
+
 if ($result -notmatch "Welcome To Microsoft Graph") {
 		Exit
 	}
