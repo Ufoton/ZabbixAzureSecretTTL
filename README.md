@@ -12,9 +12,11 @@ Script need "client secret", "tenant id" and "client id" from Azure App.
 ## Zabbix integration
 
 Powershell must be instaled https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.2. 
-Powershell module Microsoft.Graph must be instaled 
+Powershell module Microsoft.Graph 2.28.0 must be instaled 
 
     Install-Module Microsoft.Graph -Scope AllUsers
+    Or update Microsoft.Graph
+    Update-Module Microsoft.Graph -Force -Scope AllUsers
 
 Put script into external script directory https://www.zabbix.com/documentation/current/en/manual/config/items/itemtypes/external 
 In same directory create settings.json. 
