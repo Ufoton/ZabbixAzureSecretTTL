@@ -77,7 +77,7 @@ function Get-AllAppCredentials {
             # Process key credentials
             foreach ($key in $app.KeyCredentials) {
                 [PSCustomObject]@{
-                    "{#CREDENTIALTYPE}" = "Key"
+                    "{#CREDENTIALTYPE}" = "KeyCredentials"
                     "{#DISPLAYNAME}"    = $app.DisplayName
                     "{#APPID}"          = $app.AppId
                     "{#KEYID}"          = $key.KeyId
@@ -87,7 +87,7 @@ function Get-AllAppCredentials {
             # Process password credentials (secrets)
             foreach ($password in $app.PasswordCredentials) {
                 [PSCustomObject]@{
-                    "{#CREDENTIALTYPE}" = "Password"
+                    "{#CREDENTIALTYPE}" = "PasswordCredentials"
                     "{#DISPLAYNAME}"    = $app.DisplayName
                     "{#APPID}"          = $app.AppId
                     "{#KEYID}"          = $password.KeyId
